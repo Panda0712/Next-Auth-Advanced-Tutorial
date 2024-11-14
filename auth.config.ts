@@ -8,8 +8,14 @@ import { LoginSchema } from "./schemas";
 
 export default {
   providers: [
-    Google,
-    Facebook,
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    Facebook({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    }),
     Credentials({
       async authorize(credentials) {
         const validateFields = LoginSchema.safeParse(credentials);

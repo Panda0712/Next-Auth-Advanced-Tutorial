@@ -4,10 +4,9 @@ import * as z from "zod";
 
 import bcrypt from "bcryptjs";
 
-import { revalidatePath, revalidateTag } from "next/cache";
-import { RegisterSchema } from "@/schemas";
-import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
+import { db } from "@/lib/db";
+import { RegisterSchema } from "@/schemas";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const validatedFields = RegisterSchema.safeParse(values);
